@@ -43,3 +43,38 @@ exports.acceptJob = async (req, res) => {
   }
 };
 
+
+exports.completeJob = async (req, res) => {
+  try {
+    const job = await Job.findById(req.params.id);
+
+    if (!job) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+
+    if (job.status !== 'accepted') {
+      return res.status(400).json({ message: 'Job must be accepted before completing' });
+    }
+
+    if (job.acceptedBy.toString() !== req.user.id) {
+      return res.status(403).json({ message: 'Only the collector who accepted this job can complete it' });
+    }
+
+    job.status = 'completed';
+    await job.save();
+
+    res.json(job);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+exports.getMyJobs = async (req, res) => {
+  try {
+    const jobs = await Job.find({ postedBy: req.user.id });
+    res.json(jobs);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
