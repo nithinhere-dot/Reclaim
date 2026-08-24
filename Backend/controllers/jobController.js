@@ -12,3 +12,11 @@ exports.createJob = async (req, res) => {
 
   res.json(job);
 };
+
+
+exports.getJobs = async (req, res) => {
+const jobs = await Job.find({status:'open'});
+
+  res.json(jobs);
+};
+
