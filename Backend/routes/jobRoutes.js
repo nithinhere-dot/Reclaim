@@ -7,4 +7,6 @@ router.post('/', auth, jobController.createJob);
 
 router.get('/',jobController.getJobs);
 
+router.put('/:id/accept', auth, jobController.acceptJob);
+
 module.exports = router;
