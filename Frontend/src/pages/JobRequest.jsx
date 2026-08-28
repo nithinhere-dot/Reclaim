@@ -52,9 +52,6 @@ function JobRequest() {
 
   return (
     <div className="job-request-page">
-      <Link to="/job" className="back-to-home">
-        <span>←</span> Back to Jobs
-      </Link>
       <div className="job-request-card">
         <div className="job-request-header">
           <Link to="/" className="job-request-logo">♻️ Reclaim</Link>

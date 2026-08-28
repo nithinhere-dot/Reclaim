@@ -18,7 +18,7 @@ function Home() {
           Turn Waste Into <span className="gradient-text">Opportunity</span>
         </h1>
         <p className="hero-subtitle">
-          Reclaim connects waste posters with collectors — making recycling 
+          Reclaim connects waste posters with collectors — making recycling
           accessible, efficient, and rewarding for everyone.
         </p>
         <div className="hero-actions">

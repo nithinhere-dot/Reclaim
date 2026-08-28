@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
-    const [error,setError]=useState('');
-    const {login}=useAuth();
+    const [error, setError] = useState('');
+    const { login } = useAuth();
 
     const navigate = useNavigate();
 
@@ -29,16 +29,16 @@ function Login() {
         }
 
 
-        axios.post('http://localhost:5000/api/auth/login',formData)
+        axios.post('http://localhost:5000/api/auth/login', formData)
             .then((res) => {
                 console.log({ type: 'success', message: 'Your Login in' });
-                login(res.data.user,res.data.token);
+                login(res.data.user, res.data.token);
                 console.log(res.data.user.role)
                 setFormData({
                     email: '',
                     password: ''
                 });
-                navigate('/job');
+                navigate(res.data.user.role === 'collector' ? '/job' : '/post-job');
 
             })
             .catch((err) => {
@@ -58,7 +58,7 @@ function Login() {
                     <h2 className="login-title">Login to Your Account</h2>
                     <p className="login-subtitle">Start turning waste into opportunity</p>
                 </div>
-    
+
 
                 <form onSubmit={handleSubmit} className="login-form">
                     <div className="form-group">
