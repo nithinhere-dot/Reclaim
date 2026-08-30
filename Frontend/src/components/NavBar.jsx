@@ -21,7 +21,7 @@ function Navbar() {
                 {getJobLink()}
                 {!user && <><Link to="/login">Login</Link>
                     <Link to="/signup">Sign Up</Link></>}
-                {user && <p>{user.name}</p>}
+                {user && <Link to="/profile">{user.name}</Link>}
                 {user && <button onClick={logout}>Logout</button>}
             </div>
         </nav>}

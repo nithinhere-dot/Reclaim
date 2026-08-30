@@ -18,7 +18,7 @@ function BottomBar() {
       return (
         <>
           <Link to="/post-job">Post Job</Link>
-          <Link to="/">My Jobs</Link>
+          <Link to="/my-jobs">My Jobs</Link>
           <Link to="/profile">Profile</Link>
         </>
       );

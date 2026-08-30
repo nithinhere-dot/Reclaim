@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from './components/NavBar';
 import BottomBar from './components/BottomBar';
 import Profile from './pages/Profile';
+import MyJobs from './pages/MyJobs';
 
 function App() {
 
@@ -39,6 +40,11 @@ function App() {
           <Route path="/profile" element={
             <ProtectedRoute>
               <Profile />
+            </ProtectedRoute>
+          }/>
+          <Route path="/my-jobs" element={
+            <ProtectedRoute allowedRole="poster">
+              <MyJobs />
             </ProtectedRoute>
           }/>
         </Routes>
