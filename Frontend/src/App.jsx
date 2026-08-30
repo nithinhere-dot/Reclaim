@@ -4,9 +4,12 @@ import Jobs from './pages/Jobs';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import JobRequest from './pages/JobRequest';
+import MyAcceptedJobs from './pages/MyAcceptedJobs';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Navbar from './components/NavBar';
+import BottomBar from './components/BottomBar';
+import Profile from './pages/Profile';
 
 function App() {
 
@@ -28,8 +31,19 @@ function App() {
             <JobRequest />
           </ProtectedRoute>
           }/>
-
+          <Route path="/my-accepted" element={
+            <ProtectedRoute allowedRole="collector">
+              <MyAcceptedJobs />
+            </ProtectedRoute>
+          }/>
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }/>
         </Routes>
+        <BottomBar/>
+
       </BrowserRouter>
     </AuthProvider>
   )

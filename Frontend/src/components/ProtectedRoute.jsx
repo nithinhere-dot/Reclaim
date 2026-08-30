@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import {useAuth} from '../context/AuthContext';
 
-function ProtectedRoute({children,allowedRole,redirectTo='/'}){
+function ProtectedRoute({children,allowedRole,redirectTo='/login'}){
     const {user}=useAuth();
 
     if(!user){
